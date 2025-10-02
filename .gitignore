@@ -1,0 +1,24 @@
+# ROS2 workspace
+build/
+install/
+log/
+*.wsbuild
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+venv/
+.venv/
+
+# IDEs / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Misc
+*.log
