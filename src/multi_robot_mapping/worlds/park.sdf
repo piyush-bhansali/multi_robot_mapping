@@ -2,6 +2,35 @@
 <sdf version="1.9">
   <world name="park_world">
 
+    <!-- ============================================ -->
+    <!-- SYSTEM PLUGINS - CRITICAL FOR FUNCTIONALITY -->
+    <!-- ============================================ -->
+    
+    <!-- Physics engine -->
+    <plugin filename="gz-sim-physics-system"
+            name="gz::sim::systems::Physics">
+    </plugin>
+    
+    <!-- Scene broadcaster for visualization -->
+    <plugin filename="gz-sim-scene-broadcaster-system"
+            name="gz::sim::systems::SceneBroadcaster">
+    </plugin>
+    
+    <!-- User commands (spawn, move, etc) -->
+    <plugin filename="gz-sim-user-commands-system"
+            name="gz::sim::systems::UserCommands">
+    </plugin>
+    
+    <!-- CRITICAL: Sensors system - enables IMU, LiDAR, Camera -->
+    <plugin filename="gz-sim-sensors-system"
+            name="gz::sim::systems::Sensors">
+      <!-- <render_engine>optix</render_engine> -->
+    </plugin>
+
+    <!-- ============================================ -->
+    <!-- WORLD CONFIGURATION -->
+    <!-- ============================================ -->
+
     <!-- Basic scene -->
     <gravity>0 0 -9.81</gravity>
     <magnetic_field>6e-6 2.3e-5 -4.2e-5</magnetic_field>
@@ -11,7 +40,7 @@
       <background>0.7 0.9 1 1</background>
     </scene>
 
-    <!-- Directional sun (no external model needed) -->
+    <!-- Directional sun -->
     <light name="sun" type="directional">
       <pose>0 0 10 0 0 0</pose>
       <cast_shadows>true</cast_shadows>
@@ -25,6 +54,10 @@
       </attenuation>
       <direction>-0.5 0.5 -1</direction>
     </light>
+
+    <!-- ============================================ -->
+    <!-- GROUND AND WALLS -->
+    <!-- ============================================ -->
 
     <!-- Ground plane (100 m x 100 m) -->
     <model name="ground_plane">
@@ -122,6 +155,10 @@
       </link>
     </model>
 
+    <!-- ============================================ -->
+    <!-- PARK DECORATIONS -->
+    <!-- ============================================ -->
+
     <!-- Simple tree model (cylinder trunk + sphere canopy) -->
     <model name="tree_1">
       <static>true</static>
@@ -165,7 +202,6 @@
     <!-- Simple park bench (all boxes) -->
     <model name="bench_1">
       <static>true</static>
-      <!-- Place near origin, yaw ~ 1.57 rad to face +Y -->
       <pose>2 0 0 0 0 1.57079632679</pose>
       <link name="link">
         <!-- Seat -->
@@ -199,20 +235,6 @@
       </link>
     </model>
 
-    <!-- A flat spawn pad to help place robots (optional) -->
-    <model name="spawn_pad">
-      <static>true</static>
-      <pose>0 0 0.01 0 0 0</pose>
-      <link name="link">
-        <collision name="col">
-          <geometry><box><size>2 2 0.02</size></box></geometry>
-        </collision>
-        <visual name="vis">
-          <geometry><box><size>2 2 0.02</size></box></geometry>
-          <material><diffuse>0.9 0.9 0.9 1</diffuse></material>
-        </visual>
-      </link>
-    </model>
 
   </world>
 </sdf>

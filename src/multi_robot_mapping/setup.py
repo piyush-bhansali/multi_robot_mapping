@@ -31,19 +31,28 @@ setup(
         # Add to data_files:
         (os.path.join('share', package_name, 'models/turtlebot3_waffle_pi'),    
             files_only('models/turtlebot3_waffle_pi/*')),
+
+        # Meshes for sensors, base and wheels
+        (os.path.join('share', package_name, 'meshes/bases'),
+            files_only('meshes/bases/*.stl')),
+        (os.path.join('share', package_name, 'meshes/wheels'),
+            files_only('meshes/wheels/*.stl')),
+        (os.path.join('share', package_name, 'meshes/sensors'),
+            files_only('meshes/sensors/*.stl')), 
+
+        # urdf file
+        (os.path.join('share', package_name, 'urdf'),
+            files_only('urdf/*.urdf')),
+      
         
         # Config files (if you add YAML parameter files later)
-        # (os.path.join('share', package_name, 'config'), 
-        #     files_only('config/*.yaml')),
+        (os.path.join('share', package_name, 'config'), 
+            files_only('config/*.yaml')),
         
         # RViz configs (if you create custom RViz views)
-        # (os.path.join('share', package_name, 'rviz'), 
-        #     files_only('rviz/*.rviz')),
+        (os.path.join('share', package_name, 'rviz'), 
+            files_only('rviz/*.rviz')),
         
-        # Models directory (if you add custom Gazebo models)
-        # Note: This would need special handling for nested directories
-        # (os.path.join('share', package_name, 'models'), 
-        #     files_only('models/**/*')),
     ],
     
     install_requires=['setuptools'],
