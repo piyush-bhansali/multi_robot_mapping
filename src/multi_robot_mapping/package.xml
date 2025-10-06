@@ -4,7 +4,7 @@
   <name>multi_robot_mapping</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="piyush.bhansali@gmail.com">piyush</maintainer>
+  <maintainer email="piyushbhansali8@gmail.com">piyush</maintainer>
   <license>Apache-2.0</license>
 
   <test_depend>ament_copyright</test_depend>
