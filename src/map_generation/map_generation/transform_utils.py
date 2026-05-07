@@ -139,6 +139,6 @@ def quaternion_to_yaw(qx: float, qy: float, qz: float, qw: float) -> float:
 def yaw_to_quaternion(yaw: float) -> tuple:
     
     rotation = Rotation.from_euler('z', yaw, degrees=False)
-    quat = rotation.as_quat()  # Returns [x, y, z, w]
+    quat = rotation.as_quat()  
     return (quat[0], quat[1], quat[2], quat[3])
 
